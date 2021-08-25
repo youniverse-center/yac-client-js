@@ -171,7 +171,14 @@ export default class Yac {
         'Authorization': `Bearer ${token.toString()}`
       }),
       credentials: 'include'
-    }).then((r) => r.json());
+    }).then((r) => {
+      if (r.status === 401) {
+        this.store.clear();
+        return undefined;
+      }
+
+      return r.json()
+    });
   }
 
   logout() {
