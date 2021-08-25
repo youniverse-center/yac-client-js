@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+      "noImplicitAny": true,
+      "forceConsistentCasingInFileNames": true,
+      "noImplicitReturns": true,
+      "strict": true,
+      "noUnusedLocals": true,
+      "module": "commonjs",
+      "outDir": "dist",
+      "target": "ESNext",
+      "allowJs": false,
+      "sourceMap": true,
+      "esModuleInterop": true,
+      "baseUrl": ".",
+      "moduleResolution": "node",
+      "declaration": true
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}
