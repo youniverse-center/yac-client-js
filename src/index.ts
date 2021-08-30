@@ -162,7 +162,7 @@ export default class Yac {
 
   async getProfile(): Promise<YacProfile|undefined> {
     const token = await this.getAccessToken();
-    if (!token) {
+    if (!token.isValid()) {
       return;
     }
 
