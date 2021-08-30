@@ -34,8 +34,8 @@ export default class SimpleStorage implements Store {
       window.sessionStorage.removeItem(key);
     });
 
-    Cookies.remove('yac-refresh-token');
-    Cookies.remove('yac-access-token');
+    Cookies.remove(`${this.prefix}-refresh-token`);
+    Cookies.remove(`${this.prefix}-access-token`);
   }
 
   saveVerifier(state: string, verifier: string): void {
@@ -47,7 +47,7 @@ export default class SimpleStorage implements Store {
   }
 
   getAccessToken(): AccessToken {
-    const data = Cookies.get('yac-access-token');
+    const data = Cookies.get(`${this.prefix}-access-token`);
     if (!data) {
       return AccessToken.Invalid();
     }
@@ -63,17 +63,17 @@ export default class SimpleStorage implements Store {
   }
 
   getRefreshToken(): string | undefined {
-    return Cookies.get('yac-refresh-token')
+    return Cookies.get(`${this.prefix}-refresh-token`)
   }
 
   saveAccessToken(accessToken: AccessToken): void {
-    Cookies.set('yac-access-token', `${accessToken.toString()};${accessToken.getExpiresAt()}`, {
+    Cookies.set(`${this.prefix}-access-token`, `${accessToken.toString()};${accessToken.getExpiresAt()}`, {
       sameSite: "strict"
     });
   }
 
   saveRefreshToken(refreshToken: string): void {
-    Cookies.set('yac-refresh-token', refreshToken, {
+    Cookies.set(`${this.prefix}-refresh-token`, refreshToken, {
       sameSite: "strict"
     });
   }
